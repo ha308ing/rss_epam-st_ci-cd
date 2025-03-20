@@ -1,5 +1,5 @@
 name: Check Branch Name Format
-on: [push]
+on: create
 
 jobs:
   check_branch_name:
@@ -7,6 +7,12 @@ jobs:
 
     steps:
       - name: Check if branch name matches the format
-        uses: goshencollege/validate-branch-name@v1.0.1
-        with:
-          pattern: "^feature\/[a-z0-9]+(-[a-z0-9]+)*$"
+        run: |
+          branch_name=${GITHUB_HEAD_REF}
+          format_regex="^feature\/[a-z0-9]+(\-[a-z0-9]+)*$"
+
+          if [[ !("$branch_name" =~ $format_regex) ]]; then
+            echo "Branch name $branch_name does not match the format."
+            exit 1
+          fi
+        shell: bash
