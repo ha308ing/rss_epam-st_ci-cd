@@ -1,5 +1,5 @@
 name: Check Branch Name Format
-on: create
+on: [push]
 
 jobs:
   check_branch_name:
