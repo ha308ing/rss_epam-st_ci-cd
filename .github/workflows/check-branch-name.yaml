@@ -1,5 +1,5 @@
 name: Check Branch Name Format
-on: [push]
+on: [pull_request]
 
 jobs:
   check_branch_name:
