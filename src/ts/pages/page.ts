@@ -30,7 +30,7 @@ class Page {
   draw(id?: string) {
     const page = this.makePage(id);
     if (page && this.container) {
-      this.container.innerHTML = '';
+      this.container.textContent = '';
       this.container.append(page);
     }
   }

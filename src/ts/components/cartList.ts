@@ -97,10 +97,10 @@ class CartList {
     const priceContainer = getExistentElement('.product__price', element);
     const oldPriceContainer = getExistentElement('.product__old-price', element);
     const countContainer = getExistentElement('.product__amount-number', element) as HTMLInputElement;
-    priceContainer.innerHTML = '$' + (plant.price * cart.basket[id]).toString();
+    priceContainer.textContent = '$' + (plant.price * cart.basket[id]).toString();
     if (plant.sale) {
       const oldPriceValue = Math.ceil((plant.price * cart.basket[id]) / ((100 - plant.sale) / 100));
-      oldPriceContainer.innerHTML = '$' + oldPriceValue.toString();
+      oldPriceContainer.textContent = '$' + oldPriceValue.toString();
     }
     countContainer.value = cart.basket[id].toString();
   }
@@ -148,7 +148,7 @@ class CartList {
   public fillCards(cart: Cart, pageInfo: PageInfo) {
     this.isCurrentPageValid(cart, pageInfo) ? null : (pageInfo.currentPage = 1);
     if (this.cardsContainer) {
-      this.cardsContainer.innerHTML = '';
+      this.cardsContainer.textContent = '';
       const itemsInBasket = Object.keys(cart.basket);
       const startItem = (pageInfo.currentPage - 1) * pageInfo.itemsOnPage;
       itemsInBasket.forEach((item, num) => {

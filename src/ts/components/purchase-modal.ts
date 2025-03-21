@@ -208,9 +208,9 @@ class PurchaseModal {
           Router.goTo(PagesList.catalogPage);
           this.modalContainer.classList.remove('purchase-modal__active');
           document.body.classList.remove('body_hold');
-          this.modalContainer.innerHTML = '';
+          this.modalContainer.textContent = '';
         } else {
-          message.innerHTML = `Thank you for your purchase. Return to catalog page after ${Math.abs(a - 3)} sec.`;
+          message.textContent = `Thank you for your purchase. Return to catalog page after ${Math.abs(a - 3)} sec.`;
         }
       }, i * 1000);
       i++;
@@ -219,7 +219,7 @@ class PurchaseModal {
 
   public draw() {
     document.body.classList.add('body_hold');
-    this.modalContainer.innerHTML = '';
+    this.modalContainer.textContent = '';
 
     this.modalContainer.addEventListener('click', (e) => {
       const target = e.target;
@@ -227,7 +227,7 @@ class PurchaseModal {
       if (target.classList.contains('purchase-modal')) {
         this.modalContainer.classList.remove('purchase-modal__active');
         document.body.classList.remove('body_hold');
-        this.modalContainer.innerHTML = '';
+        this.modalContainer.textContent = '';
       }
     });
 
