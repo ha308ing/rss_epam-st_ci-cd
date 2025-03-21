@@ -1,4 +1,4 @@
-import { cardInteger, cardLogo, PagesList } from '../base/enums';
+import { PagesList } from '../base/enums';
 import { getExistentElement, getExistentInputElement, isHTMLElement } from '../base/helpers';
 import Router from '../router';
 import Cart from './cart';
@@ -96,21 +96,7 @@ class PurchaseModal {
     const cardIcon = getExistentElement('.purchase-form__card-icon');
     if (target === null) throw new Error(`Element not found!`);
     if (!(target instanceof HTMLInputElement)) throw new Error(`Element not input!`);
-
-    switch (target.value[0]) {
-      case cardInteger.visa:
-        cardIcon.style.backgroundImage = `url(${cardLogo.visa})`;
-        break;
-      case cardInteger.masterCard:
-        cardIcon.style.backgroundImage = `url(${cardLogo.masterCard})`;
-        break;
-      case cardInteger.americanExpress:
-        cardIcon.style.backgroundImage = `url(${cardLogo.americanExpress})`;
-        break;
-      default:
-        cardIcon.style.backgroundImage = `url(${cardLogo.else})`;
-        break;
-    }
+    cardIcon.dataset['cardInteger'] = target.value[0];
   }
 
   private isCardNumberValid() {

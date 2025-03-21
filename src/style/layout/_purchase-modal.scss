@@ -125,6 +125,18 @@
     background-repeat: no-repeat;
   }
 
+  &__card-icon[data-card-integer='4'] {
+    background-image: url(./assets/svg/visa-icon.svg);
+  }
+
+  &__card-icon[data-card-integer='5'] {
+    background-image: url(./assets/svg/master-card-icon.svg);
+  }
+
+  &__card-icon[data-card-integer='3'] {
+    background-image: url(./assets/svg/american-express-icon.svg);
+  }
+
   &__block {
     display: flex;
     justify-content: space-between;
