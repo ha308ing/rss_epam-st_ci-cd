@@ -52,14 +52,10 @@ function getSaleNum(typeArr: string[]) {
 function showText(length: number) {
   const container = getExistentElement('.products__container');
   if (!length) {
-    container.style.fontSize = '30px';
-    container.style.fontWeight = '500';
-    container.style.color = '#22795D';
+    container.classList.add('not-found');
     container.textContent = 'NOT FOUND :(';
   } else {
-    container.style.fontSize = '';
-    container.style.fontWeight = '';
-    container.style.color = '';
+    container.classList.remove('not-found');
     container.textContent = '';
   }
 }
