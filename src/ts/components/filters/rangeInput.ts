@@ -47,7 +47,7 @@ class RangeInput {
 
     if (+this.priceInputMin.value) {
       this.rangeInputMin.value = this.priceInputMin.value;
-      this.range.style.left = (+this.priceInputMin.value / +this.rangeInputMin.max) * 100 + '%';
+      this.range.style.setProperty('--left', (+this.priceInputMin.value / +this.rangeInputMin.max) * 100 + '%');
     }
   }
 
@@ -58,7 +58,7 @@ class RangeInput {
     this.updateQueryParamsObj();
 
     this.rangeInputMax.value = this.priceInputMax.value;
-    this.range.style.right = 100 - (+this.priceInputMax.value / +this.rangeInputMax.max) * 100 + '%';
+    this.range.style.setProperty('--right', (+this.priceInputMax.value / +this.rangeInputMax.max) * 100 + '%');
   }
 
   private updateQueryParamsObj() {
@@ -75,7 +75,7 @@ class RangeInput {
       this.rangeInputMin.value = (maxVal - 1).toString();
     } else {
       this.priceInputMin.value = minVal.toString();
-      this.range.style.left = (minVal / +this.rangeInputMin.max) * 100 + '%';
+      this.range.style.setProperty('--left', (minVal / +this.rangeInputMin.max) * 100 + '%');
     }
   }
 
@@ -86,7 +86,7 @@ class RangeInput {
       this.rangeInputMax.value = (minVal + 1).toString();
     } else {
       this.priceInputMax.value = maxVal.toString();
-      this.range.style.right = 100 - (maxVal / +this.rangeInputMax.max) * 100 + '%';
+      this.range.style.setProperty('--right', (maxVal / +this.rangeInputMax.max) * 100 + '%');
     }
   }
 
