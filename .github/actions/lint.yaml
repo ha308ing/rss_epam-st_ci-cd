@@ -1,0 +1,11 @@
+name: Lint
+description: 'Lint the code'
+runs:
+  using: 'composite'
+  steps:
+    - name: Authenticate GCP
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+    - name: Set GCP Project
+      run: gcloud config set project ${{ inputs.project-id }}
