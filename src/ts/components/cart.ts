@@ -38,15 +38,15 @@ class Cart {
   }
 
   public showProductAmount(HTMLElement: HTMLElement | null) {
-    HTMLElement ? (HTMLElement.innerHTML = this.getProductAmount().toString()) : null;
+    HTMLElement ? (HTMLElement.textContent = this.getProductAmount().toString()) : null;
   }
 
   public showProductSum(HTMLElement: HTMLElement | null) {
-    HTMLElement ? (HTMLElement.innerHTML = this.getProductSum().toString()) : null;
+    HTMLElement ? (HTMLElement.textContent = this.getProductSum().toString()) : null;
   }
 
   public showProductOldSum(HTMLElement: HTMLElement | null) {
-    HTMLElement ? (HTMLElement.innerHTML = this.getProductOldSum().toString()) : null;
+    HTMLElement ? (HTMLElement.textContent = this.getProductOldSum().toString()) : null;
   }
 
   public saveCart() {

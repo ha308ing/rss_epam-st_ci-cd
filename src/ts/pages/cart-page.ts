@@ -56,7 +56,7 @@ class CartPage extends Page {
   }
 
   private setPromoCodes(container: HTMLElement) {
-    container.innerHTML = '';
+    container.textContent = '';
     if (this.cart.activePromoCodes.length > 0) {
       this.cart.activePromoCodes.forEach((code) => {
         if (code in promoList) {
@@ -69,15 +69,15 @@ class CartPage extends Page {
 
   public updateBill(HTMLBill: Element) {
     const amount = HTMLBill.querySelector('#bill-item');
-    amount ? (amount.innerHTML = this.cart.getProductAmount().toString()) : null;
+    amount ? (amount.textContent = this.cart.getProductAmount().toString()) : null;
     const container = HTMLBill.querySelector('#bill-promo-container');
     container instanceof HTMLElement ? this.setPromoCodes(container) : null;
     const total = HTMLBill.querySelector('#bill-total');
-    total ? (total.innerHTML = this.getTotal()) : null;
+    total ? (total.textContent = this.getTotal()) : null;
     const subtotal = HTMLBill.querySelector('#bill-old-sum');
     if (subtotal instanceof HTMLElement) {
       const subtotalVal = this.cart.getProductOldSum().toString();
-      subtotal.innerHTML = subtotalVal;
+      subtotal.textContent = subtotalVal;
       if (subtotalVal === this.getTotal().slice(1)) {
         subtotal.style.textDecoration = 'none';
       } else {
