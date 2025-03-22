@@ -82,7 +82,7 @@
     transition: .5s;
 
     @media (max-width: 470px) {
-      width: calc(100% - 40px);
+      transform: scaleX(0.89189);
       border-width: 20px 20px 40px;
       padding: 0px;
     }
