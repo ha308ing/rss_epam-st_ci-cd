@@ -85,12 +85,18 @@ class CatalogPage extends Page {
   }
 
   draw(id?: string) {
+    const loader = document.querySelector('.loader');
+    const bodyWrapper = document.querySelector('.body__wrapper');
+    loader?.classList.remove('hidden');
+    bodyWrapper?.classList.add('hidden');
     const page = this.makePage(id);
     if (page && this.container) {
       this.container.innerHTML = '';
       this.container.append(page);
       this.drawProductCard(plantsData);
       this.setSettingsButton();
+      loader?.classList.add('hidden');
+      bodyWrapper?.classList.remove('hidden');
     }
   }
 
