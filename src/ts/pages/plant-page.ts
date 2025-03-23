@@ -37,10 +37,10 @@ class PlantPage extends Page {
       block.classList.add('product-page__specification-item');
       const name = document.createElement('span');
       name.classList.add('product-page__specification-name');
-      name.innerHTML = element[0];
+      name.textContent = element[0];
       const value = document.createElement('span');
       value.classList.add(`product-page__specification-text`);
-      value.innerHTML = element[1];
+      value.textContent = element[1];
       block.append(name, value);
       container.append(block);
     });
@@ -118,25 +118,25 @@ class PlantPage extends Page {
       const plant = this.getPlant();
       if (plant) {
         const title = page.querySelector('#product-title');
-        title ? (title.innerHTML = plant.title) : null;
+        title ? (title.textContent = plant.title) : null;
 
         const navigationName = page.querySelector('#navigation-name');
-        navigationName ? (navigationName.innerHTML = plant.title) : null;
+        navigationName ? (navigationName.textContent = plant.title) : null;
 
         const description = page.querySelector('.product-page__info-text');
-        description ? (description.innerHTML = plant.description) : null;
+        description ? (description.textContent = plant.description) : null;
 
         const stockAmount = page.querySelector('.product-page__stoke-amount');
         if (plant.stock > 0) {
-          stockAmount ? (stockAmount.innerHTML = `(${plant.stock} psc.)`) : null;
+          stockAmount ? (stockAmount.textContent = `(${plant.stock} psc.)`) : null;
         } else {
-          stockAmount ? (stockAmount.innerHTML = 'not in stock') : null;
+          stockAmount ? (stockAmount.textContent = 'not in stock') : null;
           const inStoke = page.querySelector('.product-page__stoke-text');
           inStoke instanceof HTMLElement ? (inStoke.style.display = 'none') : null;
         }
 
         const newPrice = page.querySelector('.product-page__new-price');
-        newPrice ? (newPrice.innerHTML = plant.price.toString()) : null;
+        newPrice ? (newPrice.textContent = plant.price.toString()) : null;
         if (plant.sale > 0) {
           const oldPriceValue = Math.ceil(plant.price / ((100 - plant.sale) / 100));
           const oldPrice = document.createElement('span');

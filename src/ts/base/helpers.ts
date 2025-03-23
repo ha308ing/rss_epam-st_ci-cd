@@ -34,18 +34,18 @@ function setAddButton(button: HTMLElement, cart: Cart, plant: Products) {
   const id = plant.id.toString();
   if (plant.stock > 0) {
     id in cart.basket ? button.classList.add('button-purple') : button.classList.add('button');
-    id in cart.basket ? (button.innerHTML = 'In your cart') : (button.innerHTML = 'Add to cart');
+    id in cart.basket ? (button.textContent = 'In your cart') : (button.textContent = 'Add to cart');
     button.addEventListener('click', function () {
       id in cart.basket ? delete cart.basket[id] : cart.add(id);
       id in cart.basket
         ? button.classList.replace('button', 'button-purple')
         : button.classList.replace('button-purple', 'button');
-      id in cart.basket ? (button.innerHTML = 'In your cart') : (button.innerHTML = 'Add to cart');
+      id in cart.basket ? (button.textContent = 'In your cart') : (button.textContent = 'Add to cart');
       cart.updateHeader();
     });
   } else {
     button.classList.add('button-unable');
-    button.innerHTML = 'Not available';
+    button.textContent = 'Not available';
   }
 }
 
@@ -61,7 +61,7 @@ function setBuyNowButton(button: HTMLElement, cart: Cart, plant: Products) {
     });
   } else {
     button.classList.add('button-unable');
-    button.innerHTML = 'Not available';
+    button.textContent = 'Not available';
   }
 }
 

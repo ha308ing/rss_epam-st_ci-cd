@@ -1,4 +1,4 @@
-import { cardInteger, cardLogo, PagesList } from '../base/enums';
+import { PagesList } from '../base/enums';
 import { getExistentElement, getExistentInputElement, isHTMLElement } from '../base/helpers';
 import Router from '../router';
 import Cart from './cart';
@@ -96,21 +96,7 @@ class PurchaseModal {
     const cardIcon = getExistentElement('.purchase-form__card-icon');
     if (target === null) throw new Error(`Element not found!`);
     if (!(target instanceof HTMLInputElement)) throw new Error(`Element not input!`);
-
-    switch (target.value[0]) {
-      case cardInteger.visa:
-        cardIcon.style.backgroundImage = `url(${cardLogo.visa})`;
-        break;
-      case cardInteger.masterCard:
-        cardIcon.style.backgroundImage = `url(${cardLogo.masterCard})`;
-        break;
-      case cardInteger.americanExpress:
-        cardIcon.style.backgroundImage = `url(${cardLogo.americanExpress})`;
-        break;
-      default:
-        cardIcon.style.backgroundImage = `url(${cardLogo.else})`;
-        break;
-    }
+    cardIcon.dataset['cardInteger'] = target.value[0];
   }
 
   private isCardNumberValid() {
@@ -208,9 +194,9 @@ class PurchaseModal {
           Router.goTo(PagesList.catalogPage);
           this.modalContainer.classList.remove('purchase-modal__active');
           document.body.classList.remove('body_hold');
-          this.modalContainer.innerHTML = '';
+          this.modalContainer.textContent = '';
         } else {
-          message.innerHTML = `Thank you for your purchase. Return to catalog page after ${Math.abs(a - 3)} sec.`;
+          message.textContent = `Thank you for your purchase. Return to catalog page after ${Math.abs(a - 3)} sec.`;
         }
       }, i * 1000);
       i++;
@@ -219,7 +205,7 @@ class PurchaseModal {
 
   public draw() {
     document.body.classList.add('body_hold');
-    this.modalContainer.innerHTML = '';
+    this.modalContainer.textContent = '';
 
     this.modalContainer.addEventListener('click', (e) => {
       const target = e.target;
@@ -227,7 +213,7 @@ class PurchaseModal {
       if (target.classList.contains('purchase-modal')) {
         this.modalContainer.classList.remove('purchase-modal__active');
         document.body.classList.remove('body_hold');
-        this.modalContainer.innerHTML = '';
+        this.modalContainer.textContent = '';
       }
     });
 
